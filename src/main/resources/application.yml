@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: assistente-financeiro-ia
+  datasource:
+    url: jdbc:h2:mem:financadb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  ai:
+    openai:
+      base-url: https://api.groq.com/openai
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: llama-3.1-8b-instant
+          temperature: 0.1
+      audio:
+        transcription:
+          options:
+            model: whisper-large-v3
+            language: pt
